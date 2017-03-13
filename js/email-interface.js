@@ -5,5 +5,5 @@ $(document).ready(function() {
     var email = $('#email-address').val();
     console.log(email);
     $('#output').append("<li>" + "thanks for registering your email, " + email + "!" + "</li>");
-  })
+  });
 });

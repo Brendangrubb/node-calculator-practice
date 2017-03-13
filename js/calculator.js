@@ -19,4 +19,11 @@ Calculator.prototype.pingPong = function(number) {
     return output;
 };
 
+Calculator.prototype.add = function(number1, number2) {
+
+  var output = parseInt(number1) + parseInt(number2);
+  return output;
+};
+
+
 exports.calculatorModule = Calculator;
