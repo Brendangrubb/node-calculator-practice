@@ -1,1 +1,75 @@
-!function n(r,t,o){function e(a,i){if(!t[a]){if(!r[a]){var l="function"==typeof require&&require;if(!i&&l)return l(a,!0);if(u)return u(a,!0);var c=new Error("Cannot find module '"+a+"'");throw c.code="MODULE_NOT_FOUND",c}var p=t[a]={exports:{}};r[a][0].call(p.exports,function(n){var t=r[a][1][n];return e(t?t:n)},p,p.exports,n,r,t,o)}return t[a].exports}for(var u="function"==typeof require&&require,a=0;a<o.length;a++)e(o[a]);return e}({1:[function(n,r,t){function o(n){this.skin=n}o.prototype.pingPong=function(n){for(var r=[],t=1;t<=n;t++)t%15==0?r.push("ping-pong"):t%3==0?r.push("ping"):t%5==0?r.push("pong"):r.push(t);return r},o.prototype.add=function(n,r){return parseInt(n)+parseInt(r)},t.calculatorModule=o},{}],2:[function(n,r,t){var o=n("./../js/calculator.js").calculatorModule;$(document).ready(function(){$(".add").submit(function(n){n.preventDefault();var r=new o("skin"),t=$("#number-one").val(),e=$("#number-two").val();console.log(t);var u=r.add(t,e);$("#output").append("<li>The sum of "+t+" and "+e+" is "+u+"!</li>")})});var o=n("./../js/calculator.js").calculatorModule;$(document).ready(function(){$(".ping-pong").submit(function(n){n.preventDefault();var r=new o("hot pink"),t=$("#number").val();r.pingPong(t).forEach(function(n){$("#output").append("<li>"+n+"</li>")})})}),$(document).ready(function(){$(".email").submit(function(n){n.preventDefault();var r=$("#email-address").val();console.log(r),$("#output").append("<li>thanks for registering your email, "+r+"!</li>")})})},{"./../js/calculator.js":1}]},{},[2]);
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+
+function Calculator (skin){
+    this.skin = skin;
+}
+
+Calculator.prototype.pingPong = function(number) {
+    var output = [];
+    for (var i = 1; i <= number; i++) {
+        if (i % 15 === 0) {
+            output.push("ping-pong");
+        } else if (i % 3 === 0) {
+            output.push("ping");
+        } else if (i % 5 === 0) {
+            output.push("pong");
+        } else {
+            output.push(i);
+        }
+    }
+    return output;
+};
+
+Calculator.prototype.add = function(number1, number2) {
+
+  var output = parseInt(number1) + parseInt(number2);
+  return output;
+};
+
+
+exports.calculatorModule = Calculator;
+
+},{}],2:[function(require,module,exports){
+var Calculator = require('./../js/calculator.js').calculatorModule;
+
+$(document).ready(function() {
+  $('.add').submit(function(event) {
+    event.preventDefault();
+    $('#output').empty();
+    var newCalculator = new Calculator("skin");
+    var number_one = $('#number-one').val();
+    var number_two = $('#number-two').val();
+    var result = newCalculator.add(number_one, number_two);
+    $('#output').append("<li>" + "The sum of " + number_one + " and " +  number_two + " is " + result + "!" + "</li>");
+  });
+
+});
+
+
+var Calculator = require('./../js/calculator.js').calculatorModule;
+
+$(document).ready(function() {
+    $('.ping-pong').submit(function(event) {
+        event.preventDefault();
+        $('#output').empty();
+        var newCalculator = new Calculator("hot pink");
+        var number = $("#number").val();
+        var output = newCalculator.pingPong(number);
+        output.forEach(function(element) {
+            $('#output').append("<li>" + element + "</li>");
+        });
+    });
+});
+
+
+$(document).ready(function() {
+  $('.email').submit(function(event) {
+    event.preventDefault();
+    $('#output').empty();
+    var email = $('#email-address').val();
+    console.log(email);
+    $('#output').append("<li>" + "thanks for registering your email, " + email + "!" + "</li>");
+  });
+});
+
+},{"./../js/calculator.js":1}]},{},[2]);

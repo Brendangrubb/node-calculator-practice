@@ -1,32 +1,39 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="build/js/app.js"></script>
     <title>calculator</title>
   </head>
   <body>
-    <form class="ping-pong">
-      <label for="number">Enter a number</label>
-      <input type="text" name="number" id="number">
-      <button type="submit">Submit</button>
-    </form>
 
-    <form class="add">
-      <label for="number-one">Enter the first number</label>
-      <input type="number" name="number-one" id="number-one">
-      <label for="number-two">Enter the second number</label>
-      <input type="number" name="number-two" id="number-two">
-      <button type="submit">Add</button>
-    </form>
+    <div class="container">
+      <h3>ping pong</h3>
+      <form class="ping-pong">
+        <label for="number">Enter a number</label>
+        <input type="text" name="number" id="number">
+        <button class="btn btn-success" type="submit">Submit</button>
+      </form>
+      <h3>enter an email</h3>
+      <form class="email">
+        <label for="email">Enter  email address</label>
+        <input type="text" name="email" id="email-address">
+        <button class="btn btn-danger" type="submit">Submit</button>
+      </form>
+      <h3>add two numbers</h3>
+      <form class="add">
+        <label for="number-one">Enter the first number</label>
+        <input type="number" name="number-one" id="number-one">
+        <label for="number-two">Enter the second number</label>
+        <input type="number" name="number-two" id="number-two">
+        <button class="btn btn-info" type="submit">Add</button>
+      </form>
 
-    <form class="email">
-      <label for="email">Enter  email address</label>
-      <input type="text" name="email" id="email-address">
-      <button type="submit">Submit</button>
-    </form>
 
-    <p id="output"></p>
+      <p id="output"></p>
+    </div>
+
   </body>
 </html>
